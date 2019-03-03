@@ -12,7 +12,7 @@ class Game:
 
         # Box for input
         self.answer = Entry(self.frame)
-        self.answer.grid(row=0, column=1)
+        self.answer.grid(row=1, column=1)
         # where answer are stored(set)
         self.printingmessage = StringVar()
         self.label = NONE
@@ -32,7 +32,7 @@ class Game:
         Print out whatever massage
         """
         self.message = Label(self.frame, text=print)
-        self.message.grid(row=0)
+        self.message.grid(row=1)
 
     def button1(self):
         """
@@ -41,7 +41,7 @@ class Game:
 
         # call function
         self.showbutton = Button(self.frame, text="submit", command=self.AskAnswer)
-        self.showbutton.grid(row=0, column=2)
+        self.showbutton.grid(row=1, column=2)
 
     def AskAnswer(self):
         """
@@ -111,7 +111,7 @@ class Game:
         """
         self.printingmessage.set(response)  # get the printing massage
         self.label = Label(self.frame, textvariable=self.printingmessage)   # create label to print
-        self.label.grid(row=3)
+        self.label.grid(row=0)
 
 
 def main():

@@ -1,38 +1,10 @@
-import os
-from tkinter import *
-
-screen = Tk()
-screen.minsize(width=250, height=100)
-screen.maxsize(width=250, height=100)
-screen.geometry("640x640+0+0")
-
-say = Label(screen, text="Hi, we are starting a game")
-say.pack()
-say2 = Label(screen, text="Welcome to NIM!")
-say2.pack()
-
-say3 = Label(screen, text="How many balls do you want to get?")
-say3.pack()
-total = 0
-def submit_button(INput):
-    global total
-    total = INput
-    print(total)
-
-INput = 0
-
-entry_box = Entry(screen, textvariable=INput)
-entry_box.pack()
-submit = Button(screen, text="Submit", width=5, height=5, bg="light blue", command=submit_button)
-submit.pack()
-
-screen.mainloop()
 
 from time import sleep
 import random
-delay = 0.1
-#total = float(input("How many balls to you want to play with?"))
-
+print("Welcome to NIM!")
+delay = 1.0
+sleep(delay)
+total = float(input("How many balls to you want to play with?"))
 def test_total():
     """
     Checks if it pass the criteria that the initial number af balls should be greater or equal to 15
@@ -99,7 +71,6 @@ def test_remain():
     # Ex. If we have 3 balls remaining the user cannot pick 4
     if total <= 4:
         pickno = total
-
 def main():
     """
     Runs the Nim game. Asking the user how many balls does he pick. Then calculating the remaining.
@@ -130,5 +101,3 @@ def main():
         print("User WINS!")
         exit()
 main()
-
-

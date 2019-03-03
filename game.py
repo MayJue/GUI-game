@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.messagebox
 import random
 
 
@@ -121,8 +122,10 @@ class Game:
         """
         self.total = self.total - self.user_pick
         sub = int(self.total)
-        #if sub == 0:
-
+        if sub == 0:
+            self.winner = tkinter.messagebox.showinfo("Winner", "Congratulation, you've won.")
+            if self.winner == "ok":
+                self.frame.quit()
 
         if self.total > 0:
             if self.total % 5 == 0:
@@ -133,10 +136,13 @@ class Game:
 
         self.total = self.total - self.comp_pick
         tot = str(self.total)
+        if tot == "0":
+            self.winner = tkinter.messagebox.showinfo("Winner", "Oh no, the computer won.")
+            if self.winner == "ok":
+                self.frame.quit()
 
         c = "There are {0} left, computer picks {1}. Now there's {2} left".format(sub, comp, tot)
         self.printingmessage.set(c)
-
 
     def compturns(self):
         """
@@ -172,21 +178,9 @@ def main():
 
     G.PrintAnswer()     # call function to print
 
-
-    # say = Label(screen, text="What's your name?")
-    # say.grid(row=1, sticky=E)
-    #
-    # answer = Entry(screen)
-    # answer.grid(row=1, column=1)
-
     screen.mainloop()
+
 
 if __name__ == "__main__":
     main()
-#print text
-
-#
-# # Buttons
-# myButton1 = Button(screen, text="Submit", command=PrintReply)
-# myButton1.grid(row=1, column=2)
 

@@ -1,4 +1,5 @@
 from tkinter import *
+import random
 
 
 class Game:
@@ -19,9 +20,13 @@ class Game:
         # submit button
         self.showbutton = NONE
         self.state = "name"
+        self.total = NONE
+        self.user_pick = NONE
+        self.comp_pick = NONE
         #
-        # self.quitbutton = Button(frame, text="quit", command=frame.quit)
-        # self.quitbutton.grid(row=2)
+        self.quitbutton = Button(self.frame, text="quit", command=self.frame.quit)
+        self.quitbutton.grid(row=1, column=4)
+
     def SetMessage(self, print=""):
         self.message.config(text=print)
 
@@ -74,6 +79,7 @@ class Game:
                 self.printingmessage.set(M)
                 self.answer.delete(0, 'end')
                 return
+            self.total = int(txt)
             M = "You choose number {0}".format(txt)    # create a massage with input
             self.printingmessage.set(M)      # printingmessage set to message
 
@@ -97,12 +103,54 @@ class Game:
                 M = "That's not a valid number, enter a number between 1-4"
                 self.answer.delete(0, 'end')
                 return
+            self.user_pick = int(txt)
             M = "You choose number {0}".format(txt)    # create a massage with input
             self.printingmessage.set(M)      # printingmessage set to message
 
-            self.SetMessage("what number would you like to start with?")
+            self.subtract()     # print subtrated number
+
+
+
+            self.SetMessage("Choose a number 1-4 to take away")
             self.state = "number"
             self.answer.delete(0, 'end')
+
+    def subtract(self):
+        """
+        subtract the user number from the total number
+        """
+        self.total = self.total - self.user_pick
+        sub = int(self.total)
+        #if sub == 0:
+
+
+        if self.total > 0:
+            if self.total % 5 == 0:
+                self.comp_pick = random.randint(1, 4)
+            else:
+                self.comp_pick = self.total % 5
+        comp = str(self.comp_pick)
+
+        self.total = self.total - self.comp_pick
+        tot = str(self.total)
+
+        c = "There are {0} left, computer picks {1}. Now there's {2} left".format(sub, comp, tot)
+        self.printingmessage.set(c)
+
+
+    def compturns(self):
+        """
+        computer choose number
+        """
+        print(self.total)
+        if self.total > 0:
+            if self.total % 5 == 0:
+                self.comp_pick = random.randint(1, 4)
+            else:
+                self.comp_pick = self.total % 5
+        comp = str(self.comp_pick)
+        c = "computer picks {0}".format(comp)
+        self.printingmessage.set(c)
 
     def PrintAnswer(self, response=""):
         """

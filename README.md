@@ -1,7 +1,7 @@
 # GUI-game
 Creating Gui game </br>
 <b> RevolutionUC: Game of Nim </b> 
-</br>
+</br> </br>
 <b> Authors </b>
 <ul>
   <li>May Jue</li>
